@@ -55,7 +55,7 @@ stream = p.open(format=FORMAT,
 
 
 def recoreding(threshold_pause=0.3,threshold_norespon=5,maxOutputTime=3)->wave:
-    chunkContinue = []
+    chunkContinue = np.array([])
     stat = True
     NoRespon = False
     timeNoRespon = time.time()
@@ -66,18 +66,19 @@ def recoreding(threshold_pause=0.3,threshold_norespon=5,maxOutputTime=3)->wave:
         temp = np.max(audio_data)
         if temp > 1000:
             timeNoRespon = time.time()
-            NoRespon = True
-        else:
             NoRespon = False
+        else:
+            NoRespon = True
             if timeNoRespon - time.time() > threshold_norespon:
                 stat=False
         if timePause - time.time() > threshold_pause or (maxOutputTime < timeNoRespon and not NoRespon):
-            print(chunkContinue)
-            yield chunkContinue
-            chunkContinue = []
+            chunkContinue.shape = -1, CHANNELS  # 按照声道数将数组整形，单声道时候是一列数组，双声道时候是两列的矩阵
+            chunkContinue = chunkContinue.T  # 将矩阵转置
+            if chunkContinue.shape[1] != 0:
+                yield chunkContinue
+                chunkContinue = np.array([])
         else:
-            print(len(chunkContinue))
-            chunkContinue.extend(data)
+            chunkContinue = np.append(chunkContinue, audio_data)
 
 atexit.register(stream.stop_stream)  # 关闭流
 atexit.register(stream.close)
