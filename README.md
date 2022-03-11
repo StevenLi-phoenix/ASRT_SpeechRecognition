@@ -1,11 +1,10 @@
-![](https://res.ailemon.net/common/asrt_title_header.png)
+# ASRT: A Deep-Learning-Based Chinese Speech Recognition System
+ASRT是一个基于深度学习的中文语音识别系统，如果您觉得喜欢，请点一个 **"Star"** 吧~
 
 [![GPL-3.0 Licensed](https://img.shields.io/badge/License-GPL3.0-blue.svg?style=flat)](https://opensource.org/licenses/GPL-3.0) 
 [![TensorFlow Version](https://img.shields.io/badge/Tensorflow-1.15+-blue.svg)](https://www.tensorflow.org/) 
 [![Python Version](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org/) 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5808434.svg)](https://doi.org/10.5281/zenodo.5808434)
-
-ASRT是一个基于深度学习的中文语音识别系统，如果您觉得喜欢，请点一个 **"Star"** 吧~
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5808435.svg)](https://doi.org/10.5281/zenodo.5808435)
 
 **ReadMe Language** | 中文版 | [English](https://github.com/nl8590687/ASRT_SpeechRecognition/blob/master/README_EN.md) |
 
@@ -21,7 +20,40 @@ ASRT是一个基于深度学习的中文语音识别系统，如果您觉得喜�
 [FAQ常见问题](https://wiki.ailemon.net/docs/asrt-doc/asrt-doc-1deoeud494h4f)
 以及[Issues](https://github.com/nl8590687/ASRT_SpeechRecognition/issues) 避免重复提问
 
-如果程序运行时有任何异常情况，在提问时请发出完整截图，并注明所使用的CPU架构，GPU型号，操作系统、Python，TensorFlow和CUDA版本，以及是否修改过任何代码或增删数据集等。
+以下问题AI柠檬博主和群友可能会拒绝回答，包括但不限于：
+* 询问已经写在 **ASRT语音识别项目文档** 和 **Issues** 上解决过的已知重复问题。
+* 找不到重点、不知所云的提问内容，但是不给出任何其他信息。
+* 跟ASRT项目没有直接相关的问题
+* “伸手党”类的问题
+
+```
+请注意，开发者并没有义务回复您的问题，也没用义务免费给你打工，您应该具备基本的提问技巧，并善用搜索引擎，
+每个人的时间都是宝贵的。
+```
+有关AI柠檬ASRT语音项目的相关信息亦可使用[AI柠檬站内搜索引擎](https://s.ailemon.net/)进行相关信息的搜索。
+
+## ASRT相关资料 
+* [查看ASRT项目的Wiki文档](https://wiki.ailemon.net/docs/asrt-doc)
+
+ASRT的原理请查看本文：
+* [ASRT：一个中文语音识别系统](https://blog.ailemon.net/2018/08/29/asrt-a-chinese-speech-recognition-system/)
+
+ASRT训练和部署教程请看：
+* [教你如何使用ASRT训练中文语音识别模型](<https://blog.ailemon.net/2020/08/20/teach-you-how-use-asrt-train-chinese-asr-model/>)
+* [教你如何使用ASRT部署中文语音识别API服务器](<https://blog.ailemon.net/2020/08/27/teach-you-how-use-asrt-deploy-chinese-asr-api-server/>)
+
+关于经常被问到的统计语言模型原理的问题，请看：
+
+* [统计语言模型：从中文拼音到文本](https://blog.ailemon.net/2017/04/27/statistical-language-model-chinese-pinyin-to-words/)
+* [统计N元语言模型生成算法：简单中文词频统计](https://blog.ailemon.net/2017/02/20/simple-words-frequency-statistic-without-segmentation-algorithm/)
+
+关于CTC的问题请看：
+
+* [[翻译]使用CTC进行序列建模](<https://blog.ailemon.net/2019/07/18/sequence-modeling-with-ctc/>)
+
+更多内容请访问作者的博客：[AI柠檬博客](https://blog.ailemon.net/)
+
+或使用[AI柠檬站内搜索引擎](https://s.ailemon.net/)进行相关信息的搜索
 
 ## Introduction 简介
 
@@ -29,21 +61,7 @@ ASRT是一个基于深度学习的中文语音识别系统，如果您觉得喜�
 
 This project uses tensorFlow.keras based on deep convolutional neural network and long-short memory neural network, attention mechanism and CTC to implement.
 
-## 训练模型的最低软硬件要求
-### 硬件
-* CPU: 4核 (x86_64, amd64) +
-* RAM: 16 GB +
-* GPU: NVIDIA, Graph Memory 11GB+ (1080ti起步)
-* 硬盘: 500 GB 机械硬盘(或固态硬盘)
-
-### 软件
-* Linux: Ubuntu 18.04 + / CentOS 7 +
-* Python: 3.6 +
-* TensorFlow: 1.15, 2.x + (不建议使用最新版和大版本的x.x.0版)
-
-## 快速开始
-
-以在Linux系统下的操作为例：
+* **操作步骤**
 
 首先通过Git将本项目克隆到您的计算机上，然后下载本项目训练所需要的数据集，下载链接详见[文档末尾部分](https://github.com/nl8590687/ASRT_SpeechRecognition#data-sets-%E6%95%B0%E6%8D%AE%E9%9B%86)。
 ```shell
@@ -52,9 +70,9 @@ $ git clone https://github.com/nl8590687/ASRT_SpeechRecognition.git
 
 或者您也可以通过 "Fork" 按钮，将本项目Copy一份副本，然后通过您自己的SSH密钥克隆到本地。
 
-通过git克隆仓库以后，进入项目根目录；并创建一个存储数据的子目录， 例如 `/data/speech_data` (可使用软链接代替)，然后将下载好的数据集直接解压进去
+通过git克隆仓库以后，进入项目根目录；并创建一个存储数据的子目录， 例如 `dataset/` (可使用软链接代替)，然后将下载好的数据集直接解压进去
 
-注意，当前版本中，在配置文件里，默认添加了Thchs30、ST-CMDS、Primewords、aishell-1、aidatatang200、MagicData 六个数据集，如果不需要请自行删除。如果要使用其他数据集需要自行添加数据配置，并提前使用ASRT支持的标准格式整理数据。
+注意，当前版本中，在配置文件里，默认添加了Thchs30和ST-CMDS两个数据集，如果不需要请自行删除。如果要使用其他数据集需要自行添加数据配置，并提前使用ASRT支持的标准格式整理数据。
 
 ```shell
 $ cd ASRT_SpeechRecognition
@@ -123,6 +141,8 @@ Github本仓库下[Releases](https://github.com/nl8590687/ASRT_SpeechRecognition
 
 当前，最好的模型在测试集上基本能达到80%的汉语拼音正确率
 
+不过由于目前国际和国内的部分团队能做到98%，所以正确率仍有待于进一步提高
+
 ## Python Dependency Library
 Python的依赖库
 
@@ -144,18 +164,35 @@ $ pip install -r requirements.txt
 
 ## Data Sets 数据集
 
-完整内容请查看：[几个最新免费开源的中文语音数据集](https://blog.ailemon.net/2018/11/21/free-open-source-chinese-speech-datasets/)
+[几个最新免费开源的中文语音数据集](https://blog.ailemon.net/2018/11/21/free-open-source-chinese-speech-datasets/)
 
-|数据集|时长|大小|国内下载|国外下载|
-|-|-|-|-|-|
-|THCHS30|40h|6.01G|[data_thchs30.tgz](<http://openslr.magicdatatech.com/resources/18/data_thchs30.tgz>)|[data_thchs30.tgz](<http://www.openslr.org/resources/18/data_thchs30.tgz>)|
-|ST-CMDS|100h|7.67G|[ST-CMDS-20170001_1-OS.tar.gz](<http://openslr.magicdatatech.com/resources/38/ST-CMDS-20170001_1-OS.tar.gz>)|[ST-CMDS-20170001_1-OS.tar.gz](<http://www.openslr.org/resources/38/ST-CMDS-20170001_1-OS.tar.gz>)|
-|AIShell-1|178h|14.51G|[data_aishell.tgz](<http://openslr.magicdatatech.com/resources/33/data_aishell.tgz>)|[data_aishell.tgz](<http://www.openslr.org/resources/33/data_aishell.tgz>)|
-|Primewords|100h|8.44G|[primewords_md_2018_set1.tar.gz](<http://openslr.magicdatatech.com/resources/47/primewords_md_2018_set1.tar.gz>)|[primewords_md_2018_set1.tar.gz](<http://www.openslr.org/resources/47/primewords_md_2018_set1.tar.gz>)|
-|aidatatang_200zh|200h|17.47G|[aidatatang_200zh.tgz](<http://openslr.magicdatatech.com/resources/62/aidatatang_200zh.tgz>)|[aidatatang_200zh.tgz](<http://www.openslr.org/resources/62/aidatatang_200zh.tgz>)|
-|MagicData|755h|52G/1.0G/2.2G| [train_set.tar.gz](<http://openslr.magicdatatech.com/resources/68/train_set.tar.gz>) / [dev_set.tar.gz](<http://openslr.magicdatatech.com/resources/68/dev_set.tar.gz>) / [test_set.tar.gz](<http://openslr.magicdatatech.com/resources/68/test_set.tar.gz>)|[train_set.tar.gz](<http://www.openslr.org/resources/68/train_set.tar.gz>) / [dev_set.tar.gz](<http://www.openslr.org/resources/68/dev_set.tar.gz>) / [test_set.tar.gz](<http://www.openslr.org/resources/68/test_set.tar.gz>)|
+* **清华大学THCHS30中文语音数据集**
 
-  注：AISHELL-1 数据集解压方法
+  data_thchs30.tgz 
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/18/data_thchs30.tgz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/18/data_thchs30.tgz>)
+
+  test-noise.tgz 
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/18/test-noise.tgz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/18/test-noise.tgz>)
+
+  resource.tgz 
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/18/resource.tgz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/18/resource.tgz>)
+
+* **Free ST Chinese Mandarin Corpus** 
+
+  ST-CMDS-20170001_1-OS.tar.gz 
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/38/ST-CMDS-20170001_1-OS.tar.gz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/38/ST-CMDS-20170001_1-OS.tar.gz>)
+
+* **AIShell-1 开源版数据集** 
+
+  data_aishell.tgz
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/33/data_aishell.tgz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/33/data_aishell.tgz>)
+
+  注：数据集解压方法
 
   ```
   $ tar xzf data_aishell.tgz
@@ -163,32 +200,39 @@ $ pip install -r requirements.txt
   $ for tar in *.tar.gz;  do tar xvf $tar; done
   ```
 
+* **Primewords Chinese Corpus Set 1** 
+
+  primewords_md_2018_set1.tar.gz
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/47/primewords_md_2018_set1.tar.gz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/47/primewords_md_2018_set1.tar.gz>)
+
+* **aidatatang_200zh**
+
+   aidatatang_200zh.tgz
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/62/aidatatang_200zh.tgz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/62/aidatatang_200zh.tgz>)
+
+* **MagicData**
+
+  train_set.tar.gz
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/68/train_set.tar.gz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/68/train_set.tar.gz>)
+
+  dev_set.tar.gz
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/68/dev_set.tar.gz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/68/dev_set.tar.gz>)
+
+  test_set.tar.gz
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/68/test_set.tar.gz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/68/test_set.tar.gz>)
+
+  metadata.tar.gz
+[OpenSLR国内镜像](<http://openslr.magicdatatech.com/resources/68/metadata.tar.gz>)
+[OpenSLR国外镜像](<http://www.openslr.org/resources/68/metadata.tar.gz>)
+
 特别鸣谢！感谢前辈们的公开语音数据集
 
 如果提供的数据集链接无法打开和下载，请点击该链接 [OpenSLR](http://www.openslr.org)
-
-## ASRT相关资料 
-* [查看ASRT项目的Wiki文档](https://wiki.ailemon.net/docs/asrt-doc)
-
-ASRT的原理请查看本文：
-* [ASRT：一个中文语音识别系统](https://blog.ailemon.net/2018/08/29/asrt-a-chinese-speech-recognition-system/)
-
-ASRT训练和部署教程请看：
-* [教你如何使用ASRT训练中文语音识别模型](<https://blog.ailemon.net/2020/08/20/teach-you-how-use-asrt-train-chinese-asr-model/>)
-* [教你如何使用ASRT部署中文语音识别API服务器](<https://blog.ailemon.net/2020/08/27/teach-you-how-use-asrt-deploy-chinese-asr-api-server/>)
-
-关于经常被问到的统计语言模型原理的问题，请看：
-
-* [统计语言模型：从中文拼音到文本](https://blog.ailemon.net/2017/04/27/statistical-language-model-chinese-pinyin-to-words/)
-* [统计N元语言模型生成算法：简单中文词频统计](https://blog.ailemon.net/2017/02/20/simple-words-frequency-statistic-without-segmentation-algorithm/)
-
-关于CTC的问题请看：
-
-* [[翻译]使用CTC进行序列建模](<https://blog.ailemon.net/2019/07/18/sequence-modeling-with-ctc/>)
-
-更多内容请访问作者的博客：[AI柠檬博客](https://blog.ailemon.net/)
-
-或使用[AI柠檬站内搜索引擎](https://s.ailemon.net/)进行相关信息的搜索
 
 ## License 开源许可协议
 
@@ -196,7 +240,7 @@ ASRT训练和部署教程请看：
 
 ## 参考引用本项目
 
-[DOI: 10.5281/zenodo.5808434](https://doi.org/10.5281/zenodo.5808434)
+[DOI: 10.5281/zenodo.5808435](https://doi.org/10.5281/zenodo.5808435)
 
 ## Contributors 贡献者们
 
